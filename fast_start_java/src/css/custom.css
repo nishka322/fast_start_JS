@@ -1,0 +1,79 @@
+/* Переменные для светлой темы */
+:root {
+  --ifm-color-primary: #e6b800; /* Темно-желтый для лучшей читаемости */
+  --ifm-color-primary-dark: #cc9900; /* Более темный желтый */
+  --ifm-color-primary-darker: #b38f00;
+  --ifm-color-primary-darkest: #997a00;
+  --ifm-color-primary-light: #ffd633; /* Светлый желтый */
+  --ifm-color-primary-lighter: #ffe066;
+  --ifm-color-primary-lightest: #fff5cc;
+
+  --ifm-background-color: #f0f0f0; /* Светло-серый фон для светлой темы */
+  --ifm-color-background-secondary: #e0e0e0; /* Второстепенный фон еще более темный серый */
+  --ifm-color-text: #333333; /* Темно-серый текст для лучшего контраста */
+}
+
+/* Переменные для темной темы */
+[data-theme='dark'] {
+  --ifm-color-primary: #ffcc00; /* Желтый цвет для темной темы */
+  --ifm-color-primary-dark: #e6b800;
+  --ifm-color-primary-darker: #cc9900;
+  --ifm-color-primary-darkest: #b38f00;
+  --ifm-color-primary-light: #ffd633;
+  --ifm-color-primary-lighter: #ffe066;
+  --ifm-color-primary-lightest: #fff5cc;
+
+  --ifm-background-color: #000000; /* Черный фон для темной темы */
+  --ifm-color-background-secondary: #1a1a1a; /* Темно-серый для второстепенных элементов */
+}
+
+/* Новые стили для навбара */
+
+/* Изменяем высоту навбара */
+.navbar {
+  height: 100px; /* Пространство для логотипа и текста */
+  display: flex;
+  align-items: center; /* Центрируем элементы по вертикали */
+  justify-content: space-between; /* Разделяем элементы по сторонам */
+}
+
+/* Логотип и другие изображения в навбаре */
+.navbar__logo img, .navbar__item img {
+  height: 80px; /* Размер логотипа */
+  width: auto;
+  margin-right: 10px;
+}
+
+/* Контейнеры элементов навбара */
+.navbar__logo, .navbar__item {
+  display: flex;
+  align-items: center; /* Центрируем элементы по вертикали */
+}
+
+/* Адаптируем навбар для небольших экранов */
+@media (max-width: 768px) {
+  .navbar {
+    height: 80px; /* Уменьшаем высоту на мобильных устройствах */
+  }
+
+  .navbar__logo img, .navbar__item img {
+    height: 60px; /* Уменьшаем размер логотипа на мобильных */
+  }
+}
+
+/* Фиксация боковой панели */
+.docSidebarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px; /* Задаем фиксированную ширину для панели */
+  overflow-y: auto;
+  z-index: 1000;
+  background-color: var(--ifm-background-color); /* Добавляем фон, чтобы панель была видна */
+}
+
+/* Корректируем основной контент, чтобы он не перекрывал боковую панель */
+.docMainContainer {
+  margin-left: 300px; /* Делаем отступ на ширину боковой панели */
+}

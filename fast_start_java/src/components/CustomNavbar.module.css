@@ -1,0 +1,19 @@
+/* src/components/CustomNavbar.module.css */
+.customNavbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f5f5f5; /* или любой другой цвет */
+  }
+  
+  .logo {
+    height: 40px; /* или любой другой размер */
+    margin-right: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: auto; /* Сдвигает элементы вправо */
+  }
+  
