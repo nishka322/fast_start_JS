@@ -1,0 +1,107 @@
+openapi: 3.0.1 # Версия спецификации OpenAPI
+info:
+  title: Dog Shelter API # Название API
+  description: API для получения информации о собаках из приюта # Описание API
+  version: 1.0.0 # Версия API
+
+servers:
+  - url: http://localhost:8080/jsonrpc # URL локального сервера для разработки
+    description: Локальный сервер для разработки # Описание сервера
+
+paths:
+  /: # Путь к конечной точке API
+    post:
+      summary: Обработка JSON-RPC запросов # Краткое описание конечной точки
+      description: Отправляет запрос на сервер и получает информацию о собаке по данным запроса. # Подробное описание
+      requestBody:
+        content:
+          application/json: # Формат данных запроса
+            schema:
+              type: object # Тип данных запроса
+              properties:
+                jsonrpc:
+                  type: string
+                  example: "2.0" # Пример значения
+                method:
+                  type: string
+                  example: "get_dog_by_id" # Пример метода запроса
+                params:
+                  type: object # Параметры запроса
+                  properties:
+                    id:
+                      type: integer
+                      example: 1 # Пример ID собаки
+                    breed:
+                      type: string
+                      example: "Labrador" # Пример породы собаки
+                    age:
+                      type: integer
+                      example: 5 # Пример возраста собаки
+                    name:
+                      type: string
+                      example: "Rex" # Пример имени собаки
+                id:
+                  type: integer
+                  example: 1 # Пример ID запроса
+      responses:
+        '200': # Код ответа для успешного запроса
+          description: Успешный ответ
+          content:
+            application/json: # Формат данных ответа
+              schema:
+                type: object # Тип данных ответа
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: "2.0" # Пример значения
+                  result:
+                    type: object # Результат запроса
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      breed:
+                        type: string
+                      age:
+                        type: integer
+                  id:
+                    type: integer
+        '400': # Код ответа для ошибки запроса
+          description: Ошибка запроса
+          content:
+            application/json: # Формат данных ответа
+              schema:
+                type: object # Тип данных ответа
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: "2.0" # Пример значения
+                  error:
+                    type: object # Ошибка запроса
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  id:
+                    type: integer
+        '404': # Код ответа для случая, когда ресурс не найден
+          description: Не найдено
+          content:
+            application/json: # Формат данных ответа
+              schema:
+                type: object # Тип данных ответа
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: "2.0" # Пример значения
+                  error:
+                    type: object # Ошибка запроса
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                  id:
+                    type: integer
